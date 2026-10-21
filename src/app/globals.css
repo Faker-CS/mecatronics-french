@@ -28,6 +28,16 @@
 
   /* Motion */
   --animate-marquee: marquee 60s linear infinite;
+  --animate-step-fill: step-fill 6s linear forwards;
+
+  @keyframes step-fill {
+    from {
+      transform: scaleY(0);
+    }
+    to {
+      transform: scaleY(1);
+    }
+  }
 
   @keyframes marquee {
     from {
