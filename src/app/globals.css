@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens — extracted from the Figma file "Mecatronics" (page "final",
+ * frame "Mecatronics french"). Keep names semantic so pages can be re-skinned.
+ */
+@theme {
+  /* Brand */
+  --color-brand: #dd3320;
+  --color-brand-bright: #ff3019;
+  --color-brand-glow: #ff442f;
+
+  /* Neutrals */
+  --color-night: #150a08; /* dark section background */
+  --color-ink: #333333; /* headings on light */
+  --color-ink-strong: #232323; /* card titles, dark round buttons */
+  --color-muted: #696d76; /* body copy on light */
+  --color-snow: #fcfcfc; /* text on dark */
+  --color-surface: #f6f6f6; /* review cards */
+  --color-line: #ededed; /* step tracks */
+  --color-star: #fcbd03;
+  --color-star-off: #d9d9d9;
+
+  /* Typography */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bebas), "Arial Narrow", sans-serif;
+  --font-nav: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
+
+  /* Motion */
+  --animate-marquee: marquee 60s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background: #ffffff;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* 1280px content column with the 80px desktop gutters from the design. */
+@utility container-site {
+  margin-inline: auto;
+  width: 100%;
+  max-width: calc(1280px + 2rem);
+  padding-inline: 1rem;
+
+  @media (min-width: 640px) {
+    max-width: calc(1280px + 4rem);
+    padding-inline: 2rem;
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
